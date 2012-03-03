@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+.NOTES{ konny holds everything within your profile from your display name to the bottom of your comments }
+#konny {color:#ddd;}
+
+.NOTES{ MLine is the titles of the comments, and friend space. it also effects the is not logged in and you cannt comment your profile lines. 
+		Everything that has a blue background, but looks like its an image. }
+.MLine {color:#000; font-weight:bold; background:#6e9dd4 url("images/head_on.gif"); padding:2px; text-align:center;}
+.MLine a:link, .MLine a:visited {color:#333; text-decoration:underline;}
+.MLine a:hover, .MLine a:active {color:#000;}
+.MLine a {color:#000;}
+
+.NOTES{ .browse is the class for the paging of the comments. }
+.browse {background:#545454 url(images/head_off.gif); padding:4px;text-align:center;}
+.browse a, .browse a:visited {background:transparent; border:1px solid #545454; padding:3px; color:#000; text-decoration:none;}
+.browse a:hover, .browse a:active, .browse a:focus {background:#242424; border:1px solid #000; color:#6E9DD4;}
+.browse span {background:#B4B4B4; padding:3px; color:#000; border:1px solid #000;}
+
+
+.proHead {background:url("images/head_off.gif"); height:25px; text-indent:30px; font-weight:bold; color:#000; font-size:20px; font-family:georgia, tahoma, new times roman;}
+.proPic {float:left; width:200px;margin-left:5px; text-align:center;}
+.proInfoTable {float:left;width:300px; margin-left:5px;}
+.contactTable {float:left;}
+
+
+.proInfo {vertical-align:top;}
+.proInfo td {width:50%;}
+.proL {background:url("images/hover_on.gif") top repeat-x; text-indent:3px; width:30% !important;}
+.proQuote {background:#242424; line-height:30px; text-indent:40px; font-style:italic;}
+
+.NOTES{ the layouts that are on your profiles }
+.top5Layouts {float:left; text-align:center; margin:0 2px;}
+
+.NOTES{ left side where the friends list is, and contact tables }
+.UProSide {width:325px; float:left;}
+.UProSide table {border-collapse:collapse;}
+.UProSide table td {text-align:center; vertical-align:top;}
+
+.UProSide div {text-align:center; width:325px;}
+.UProSide div.images b {color:#000;background:#545454 url(images/head_off.gif); padding:4px 0;text-align:center; width:325px; display:block;}
+.UProSide div.MSContacts img {cursor:pointer;}
+.UProSide div.MSContacts div {width:100%;}
+.UProSide div.MSContacts div a {display:block; width:100%; position:relative;}
+.UProSide div.MSContacts {width:325px;}
+.UProSide div.MSContacts .sideHead {background: url("images/top5sf.gif") bottom repeat-x black;width:325px; padding:10px 0;}
+
+.NOTES{ right side where the comments are at }
+.Comments {float:right; width:450px;margin-bottom:5px;}
+.NOTES{ f*ck IE yo, I swear Ima knock it out of of these days haha }
+* html .Comments {margin-right:-10px;}
+.commentsPeps {margin:0px 20px 3px 20px; width:410px; border:1px inset #525252; padding:5px; background:url(images/foot_bg.gif) repeat-x top #000;}
+.commentsPeps span.comName {display:block; text-indent:15px; background:#242424; padding:5px 0px;}
+.commentsPeps .commentMess {float:right; width:335px;}
+.commentsPeps .comImg img {width:60px;}
+.commentsPeps .comImg {float:left;}
+
+.commentForm textarea {background:#333; border-width:1px; border-color:#6e9dd4; color:#fff; padding:5px; width:440px;}
+.commentForm .comSub {width:200px;}
+
+
+.clear {clear:both;}
+.centered {text-align:center;}
+
+.NOTES{ heres whats within the middle section of the profiles }
+#ProfileContents { padding:0px 4px;position:relative; display:block; border-left:150px solid #242424; overflow:visible; }
+* html #ProfileContents {display:inline-block;}
+#ProfileContents .proProfile {float:left; position:relative; margin-left:-145px; display:inline; width:137px;}
+#mainContents {border-left:1px dotted #0af; padding:5px;}
+.proProfile ul {list-style-type:none; margin:0; padding:0;}
+.proProfile ul li {margin:0;}
+.proProfile .linkTitle {color:#0af; background:#111;text-indent:10px; display:block;width:100%; line-height:23px; border-bottom:1px outset #0af;}
+
+.extraTable1 {border-left:1px dotted #0af; padding-left:5px; float:left; width:48%; background:#000;}
+.extraTable2 {float:left; width:48%; margin-left:5px;}
+.ExtraTableTitle, .extraTableTitle {border-width:5px; border-style:solid; border-color:#0af #000; background:#222; text-indent:15px;}
+
+.NOTES {below is the codes for the goodie box thats on your profile}
+.goodies {clear:both; width:250px; text-align:center; border:1px solid #333;}
+.goodies b {display:block; background:#0af; color:#000; font-family:georgia;}
+.goodies .boxes span {float:left; padding:5px; margin:2px; background:#111; border:1px solid #444;}
+.NOTES{The following is for the popup thing that comes up when you try to send someone a gift}
+.goodieBox {display:none; padding:10px;} 
+.items {margin:0;}
+.GoodieItems {float:left; margin: 5px; border:1px solid #000; text-align:center; padding:5px;}
+.GoodieItemsHover {float:left; margin: 5px; border:1px solid #0af; text-align:center; padding:5px; background:#222;}
+.goodieBox h3 {margin:5px 0 0 5px; background:#111; text-indent:25px; color:#6e9dd4; border-bottom:1px solid #222;}
+.smallAbout {width:50%; text-indent:15px; padding:5px; margin:5px; background:#111; border:1px solid #333;}
+
+.linkBar {margin: 5px; line-height:25px;}
+.linkBar a {padding:5px; background:#444; border:1px solid #666;}
+.linkBar a:hover {background:#222; color:#888; border-color:#0af;}
+.MyTokens {background:#333; padding:5px; color:#0af; border-bottom:1px solid #777; text-indent:40px;}
+
+#Friends li{text-align:center; float:left; margin:5px;}
+#Friends img{max-width:90px; max-height:90px;}

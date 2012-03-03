@@ -1,0 +1,10 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-02-29 13:36:58 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
+ERROR - 2012-02-29 13:37:10 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
+ERROR - 2012-02-29 13:37:10 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
+ERROR - 2012-02-29 13:37:13 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
+ERROR - 2012-02-29 13:37:20 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
+ERROR - 2012-02-29 13:37:46 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
+ERROR - 2012-02-29 13:37:49 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
+ERROR - 2012-02-29 13:37:51 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /home/d0p/www/community/application/controllers/images.php:23) /home/d0p/www/community/application/controllers/images.php 24
