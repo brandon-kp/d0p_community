@@ -23,6 +23,11 @@ class Userprofile extends CI_Controller {
 		$this->load->model('myaccount_model','myaccount');
 		$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		$this->id = str_replace('~','',$this->uri->segment(3));
+		
+		if(empty($this->id))
+		{
+			$this->id = $this->session->userdata('id');
+		}
 	}
 	public function index()
 	{
@@ -124,11 +129,6 @@ class Userprofile extends CI_Controller {
 	
 	public function allcomments()
 	{
-		if(empty($this->id))
-		{
-			$this->id = $this->session->userdata('id');
-		}
-		
 		$this->load->helper('form');
 		$this->load->library('pagination');
 		

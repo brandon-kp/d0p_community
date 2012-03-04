@@ -4,4 +4,5 @@
 <ul>
 	<li><a href="<?php echo site_url('myaccount/editprofile');?>">Edit Profile</a></li>
 	<li><a href="<?php echo site_url('myaccount/uploadphotos');?>">Upload Photos</a></li>
+	<li><a href="<?php echo site_url('userprofile/allcomments');?>">My Comments</a>
 </ul>
