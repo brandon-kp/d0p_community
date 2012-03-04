@@ -124,6 +124,11 @@ class Userprofile extends CI_Controller {
 	
 	public function allcomments()
 	{
+		if(empty($this->id))
+		{
+			$this->id = $this->session->userdata('id');
+		}
+		
 		$this->load->helper('form');
 		$this->load->library('pagination');
 		
