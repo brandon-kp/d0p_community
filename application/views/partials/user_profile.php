@@ -100,13 +100,14 @@
 			<div class="clear"></div>
 		</div>		
 		<?php endforeach;?>
+		<div id="newComment" style="display:none"></div>
 		<p class="browse">
 			<a class="pdot" href="<?php echo site_url('userprofile/allcomments/'.$profiledata['id']);?>">View / Edit Comments</a>
 		</p>
 		<?php if($profiledata['id'] == $userprofile['id']):?>
 		<p class="MLine">You can't comment on yourself, you egomaniac.</p>
 		<?php elseif($profiledata['show_form'] == true):?>
-			<?php echo form_open('userprofile/comments_process');?>
+			<?php echo form_open('userprofile/comments_process', array('id'=>'comment_form'));?>
 				<div class="commentForm">
 					<p><textarea name="text" id="formMessage"></textarea></p>
 					<p><input type="submit" name="submit" value="Post Comment" /></p>
@@ -121,3 +122,24 @@
 	
 	<div class="clear"></div>
 </div>
+
+<script>
+$('.commentForm input[type=submit]').click(function(){
+	$('.commentForm').prepend('<img src="<?php echo base_url('assets/images/ajax-loader.gif');?>" alt="Loading..." id="loading_img" />');
+	var data = $('#comment_form').serialize();
+	var comment = $('#formMessage').val();
+
+	$.ajax({
+		  type: 'POST',
+		  url: "<?php echo site_url('userprofile/comments_process');?>",
+		  data: data
+		}).done(function( response ) {
+			$('.commentForm p').slideUp("slow");
+			$('#loading_img').hide();
+			$('.commentForm').append('<p class="success" style="display:none">Your comment has been posted!');
+			$('p.success').fadeIn(500);
+			$('#newComment').append('<div class="commentsPeps"><span class="comName">&nbsp;&nbsp;&nbsp;<a href="<?php echo site_url('userprofile/~'.$userprofile['id']);?>"><?php echo $userprofile['name'];?></a> ~ <?php echo date("D M d, Y g:ia", now());?></span><div class="comImg"><a href="<?php echo site_url('userprofile/~'.$userprofile['id']);?>"><img src="<?php echo site_url($userprofile['photo']);?>" alt="Picture.." /></a></div><div class="commentMess">'+comment+'</div><div class="clear"></div></div>').slideDown(500);
+		});
+	return false;
+});
+</script>

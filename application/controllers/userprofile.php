@@ -60,7 +60,7 @@ class Userprofile extends CI_Controller {
 		}
 		elseif($this->userprofile->check_if_blocked($this->uri->segment(3), $this->session->userdata('id')))
 		{
-			show_error($this->lang->line('error_already_friends'));
+			show_error($this->lang->line('error_user_blocked'));
 		}
 		
 		$this->template
@@ -84,15 +84,15 @@ class Userprofile extends CI_Controller {
 		
 		if(!is_numeric($this->uri->segment(3)))
 		{
-			show_error('invalid user id');
+			show_error($this->lang->line('error_invalid_id'));
 		}
 		elseif($this->uri->segment(3) == $this->session->userdata('id'))
 		{
-			show_error("you can't block yourself");
+			show_error($this->lang->line('error_block_self'));
 		}
 		elseif($this->userprofile->check_if_blocked($this->session->userdata('id'), $this->uri->segment(3)))
 		{
-			show_error("Already blocked");
+			show_error($this->lang->line('error_already_blocked'));
 		}
 		
 		$this->template
@@ -169,7 +169,6 @@ class Userprofile extends CI_Controller {
 	 */
 	public function comments_process()
 	{
-		var_dump($this->input->post());
 		$this->userprofile->post_comment($this->input->post('to'), $this->session->userdata('id'), $this->input->post('text'));
 	}
 
