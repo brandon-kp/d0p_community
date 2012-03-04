@@ -48,19 +48,19 @@ class Userprofile extends CI_Controller {
 			
 		if(!is_numeric($this->uri->segment(3)))
 		{
-			show_error('invalid user id');
+			show_error($this->lang->line('error_invalid_id'));
 		}
 		elseif($this->uri->segment(3) == $this->session->userdata('id'))
 		{
-			show_error("you can't add yourself");
+			show_error($this->lang->line('error_add_self'));
 		}
 		elseif($this->userprofile->check_if_buddy($this->uri->segment(3), $this->session->userdata('id')))
 		{
-			show_error("already friends");
+			show_error($this->lang->line('error_already_friends'));
 		}
 		elseif($this->userprofile->check_if_blocked($this->uri->segment(3), $this->session->userdata('id')))
 		{
-			show_error("you blocked, nigga");
+			show_error($this->lang->line('error_already_friends'));
 		}
 		
 		$this->template
