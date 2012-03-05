@@ -73,6 +73,17 @@ function check_notifications()
 	{
 		$notification['buddy_requests'] = FALSE;
 	}
+	
+	//check for new comments
+	$coms = $ci->user_helper->check_new_comments($id);
+	if(count($coms) > 0)
+	{
+		$notification['new_comments'] = TRUE;
+	}
+	else
+	{
+		$notification['new_comments'] = FALSE;
+	}
 	return $notification;
 	
 }

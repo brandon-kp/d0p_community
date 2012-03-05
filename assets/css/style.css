@@ -55,22 +55,34 @@ font-weight:bold; text-align:center; padding:0 0 0 6px; cursor:pointer;}
 
 #site_info{float:left;  margin: 5px; width:50%;}
 
-#account_col{width:250px;float:left;border-right:1px solid #333;}
+#account_col{width:200px;float:left;border-right:1px solid #333;}
 #welcome_name{background:url(/community/assets/css/images/welcomename.png) center center repeat-x;height:25px;font-size:15px;color:#999;margin:2px 0;padding:1px 3px;}
 #photo{margin:5px 0;}
 #photo img{max-width:245px;}
 #messages{border:1px solid #444;background:#333;padding:5px;}
-#toolbar{margin:10px 0;}
-#toolbar span.toolbar_title{background:#222;display:block;font-weight:700;padding:1px; padding-left:10px; margin:1px;}
+#toolbar{margin:10px 0; padding-top:8px; background:url('images/account_nav.png') center top no-repeat;}
+#toolbar span.toolbar_title{display:block; height:24px; background:url('/community/assets/css/images/account_nav_bg.png') center top repeat-x; font-family:georgia; text-align:center; cursor:pointer; font-size:16px;border-top:1px solid #333; border-bottom:1px solid #666;}
 #toolbar ul  li{margin-left:10px;border-left:4px solid #0af;}
 #toolbar ul li a{background:#444;display:block;padding-left:5px; border-bottom:1px solid #222;}
 #toolbar li a:hover{background:#353535;}
 
-#updates_col{float:right;width:500px;border:1px solid #333;margin-right:77px;}
-#updates_col .info{background:#333;padding:5px 5px;}
+#rightcol{float:right;width:578px;}
+#updates_col{border:1px solid #333;}
+#updates_col .info{background:#333;padding:5px 5px; text-align:center;}
 #updates_col p.text a{float:left; margin:10px;}
 #updates_col p.text a img{max-width:50px;}
 #updates_col p{padding:5px;}
+#rightcol #birthdays{float:right; background:#333; width:35%; padding:2px; border:1px solid #555; margin-top:3px;}
+#rightcol .heading{color:#0af; font-size:15px; display:block; text-align:center;}
+#rightcol #birthdays div{background:#222; padding:5px;}
+#rightcol #birthdays div a{display:block; background:#333; margin:3px; border:1px outset #0bf; padding:1px; text-indent:10px;}
+#rightcol #new_layouts{float:left; width:62%; background:#333; padding:2px; border:1px solid #555; margin-top:3px;}
+#rightcol #new_layouts div{background:#222; padding:5px; width:48%; text-align:center; border:1px solid #555;}
+#rightcol #new_layouts div img{width:95%;}
+
+
+#tokens{border:1px solid #333; padding:3px; width:110px; float:left; text-align:center; margin:0 5px;}
+#tokens strong{display:block; color:#0af; background:#333;}
 
 #publish_update, #edit_profile{
 background:#111;
@@ -194,7 +206,29 @@ margin-bottom:20px;
 #privatemessages{
 margin:10px;
 float:right;
-width:680px;
+width:880px;
+}
+#privatemessages #messages_col{
+float:right;
+width:650px;
+}
+#privatemessages #sidepanel{
+float:left;
+padding:10px;
+border:1px solid #555;
+width:190px;
+margin-top:3px;
+}
+#privatemessages #sidepanel li a{
+background:#444;
+display:block;
+margin:4px;
+padding:0px;
+border:1px solid #444;
+text-indent:10px;
+}
+#privatemessages #sidepanel li a:hover{
+border:1px solid #0af;
 }
 #privatemessages .message{
 height:30px;

@@ -86,6 +86,10 @@ class Userprofile_model extends CI_Model {
 	
 	public function get_comments($id, $limit='15', $offset='0')
 	{
+		$this->db->where(array('area'=>'0',
+							   'read'=>'0',
+							   'to'=>$id))
+				 ->update('user_comments',array('read'=>'1'));
 		return $this->db
 				->order_by('date','desc')
 				->join('user_profile','user_profile.id=user_comments.from')
@@ -102,5 +106,6 @@ class Userprofile_model extends CI_Model {
 												'date'=>time(),
 		));
 	}
+	
 
 }

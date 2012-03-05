@@ -40,4 +40,9 @@ class User_helper extends CI_Model {
 		return $this->db->get_where('user_relationships',array('user_2'=>$id, 'block'=>NULL, 'buddy'=>'0'))->result_array();
 	}
 	
+	public function check_new_comments($id)
+	{
+		return $this->db->get_where('user_comments',array('to'=>$id, 'area'=>0, 'read'=>'0'))->result_array();
+	}
+	
 }

@@ -28,7 +28,7 @@ class Messages extends CI_Controller {
 		$this->data['messages'] = $this->messages->get_all_messages($this->session->userdata('id'));
 		$this->template
 			->title('.^. Skem9 :: My Messages .^.')
-			->build('partials/all_messages', $this->data);
+			->build('partials/messages/all_messages', $this->data);
 	}
 	
 	public function read()
@@ -37,7 +37,7 @@ class Messages extends CI_Controller {
 		
 		$this->template
 			->title('.^. Skem9 :: My Messages .^.')
-			->build('partials/read_message', $this->data);
+			->build('partials/messages/read_message', $this->data);
 		
 		$this->messages->mark_as_read($this->uri->segment(3));
 	}
@@ -48,7 +48,7 @@ class Messages extends CI_Controller {
 		$this->data['userbox'] = $this->userprofile->userprofile($this->uri->segment(3));
 		$this->template
 			->title('.^. Skem9 :: Send Message .^.')
-			->build('partials/send_message', $this->data);
+			->build('partials/messages/send_message', $this->data);
 	}
 	
 	public function sendmessage_process()
