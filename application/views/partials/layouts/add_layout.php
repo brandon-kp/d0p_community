@@ -10,7 +10,7 @@
 		</p><p>
 			<label for="category">Layout Category::.</label>
 			<select name="category">
-				<?php foreach($categories as $cat):?><option value="<?php echo $cat['id']; ?>"><?php echo $cat['title'];?></option><?php endforeach;?>
+				<?php foreach($categories as $cat):?><option value="<?php echo $cat['id']; ?>"><?php echo ucwords($cat['title']);?></option><?php endforeach;?>
 			</select>
 		</p><p>
 			<label for="type">Layout Type::.</label>

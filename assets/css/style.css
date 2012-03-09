@@ -301,3 +301,15 @@ text-align:center;
 #sendmessage .userbox img{display:block}
 
 p.success{padding:10px; border:1px solid #6e9dd4; color:#0af; font-size:15px; background:#393939;}
+
+.commentForm textarea {background:#333; border-width:1px; border-color:#6e9dd4; color:#fff; padding:5px; width:440px;}
+.commentForm .comSub {width:200px;}
+.NOTES{ right side where the comments are at }
+.Comments {float:right; width:450px;margin-bottom:5px;}
+.NOTES{ f*ck IE yo, I swear Ima knock it out of of these days haha }
+* html .Comments {margin-right:-10px;}
+.commentsPeps {margin:0px 20px 3px 20px; width:410px; border:1px inset #525252; padding:5px; background:url(images/foot_bg.gif) repeat-x top #000;}
+.commentsPeps span.comName {display:block; text-indent:15px; background:#242424; padding:5px 0px;}
+.commentsPeps .commentMess {float:right; width:335px;}
+.commentsPeps .comImg img {width:60px;}
+.commentsPeps .comImg {float:left;}

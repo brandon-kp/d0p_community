@@ -13,7 +13,7 @@ class Layouts extends CI_Controller {
 		$this->template->set_layout('logged_in.php');
 	}
 	
-	//create
+	//create	
 	public function addlayout()
 	{
 		check_login();
@@ -34,20 +34,21 @@ class Layouts extends CI_Controller {
 	{
 		$errors = array();
 		$config['upload_path'] = 'uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_width']  = '300';
 		$config['max_height']  = '300';
 
 		$this->load->library('upload', $config);
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('title','Title', 'required');
-		$this->form_validation->set_rules('userfile','Preview Image', 'required');
+		//$this->form_validation->set_rules('userfile','Preview Image', 'required');
 		$this->form_validation->set_rules('notes','Notes', 'required');
 		$this->form_validation->set_rules('tos','Terms of Service', 'required');
 		
 		if (!$this->upload->do_upload())
 		{
 			$errors = array('error' => $this->upload->display_errors());
+			var_dump($errors);
 		}
 		else
 		{
@@ -72,14 +73,15 @@ class Layouts extends CI_Controller {
 			$json = json_decode(curl_exec($curl),true); $json = $json['upload']['image'];
 			curl_close ($curl);
 			unlink($file);
-		}
-		if($this->form_validation->run() == TRUE)
-		{
-			$this->layouts->addlayout($json['hash'], $post['notes'], $post['code'], $this->session->userdata('id'), $post['category'], $post['type'], $post['title']);	
-		}
-		else
-		{
-			$errors = validation_errors();
+			
+			if($this->form_validation->run() == TRUE)
+			{
+				$this->layouts->addlayout($json['hash'], $post['notes'], $post['code'], $this->session->userdata('id'), $post['category'], $post['type'], $post['title']);	
+			}
+			else
+			{
+				$errors = validation_errors();
+			}			
 		}
 		
 		return $errors;
@@ -95,6 +97,65 @@ class Layouts extends CI_Controller {
 		$this->template
 			->title('.^. Skem9 :: Profile Layouts .^.')
 			->build('partials/layouts/layouts_home', $this->data);
+	}
+	
+	public function site()
+	{
+		$offset = 0;
+		$this->params = $this->uri->uri_to_assoc(2);
+		$this->data['type'] = $this->layouts->get_single_type($this->params['site']);
+		$this->data['cats'] = $this->layouts->list_categories();
+		$this->data['site'] = $this->uri->segment(3);
+		
+		if(!isset($this->params['category']))
+		{
+			$this->data['layouts'] = $this->layouts->get_layouts($this->params['site']);
+		}
+		else
+		{
+			$this->data['layouts'] = $this->layouts->get_layouts($this->params['site'], $this->params['category']);
+		}
+		
+		$this->template
+			->title('.^. Skem9 :: Profile Layouts .^.')
+			->build('partials/layouts/layouts_site', $this->data);
+	}
+	
+	public function review()
+	{	
+		$this->load->library('Comments');
+		
+		$this->data['id'] = $this->uri->segment(3);
+		$this->data['layout'] = $this->layouts->get_single_layout($this->data['id']);
+		$this->data['layout']['comment_form'] = $this->comments->post_comment('1', $this->data['id']);
+		$this->data['layout']['comments'] = $this->comments->get_comments('1', $this->data['id']);
+		
+		$this->template
+			->title('.^. Skem9 :: Review Layout .^.')
+			->build('partials/layouts/layout_review', $this->data);
+		
+		$this->_rate($this->data['layout']['voted_by'],$this->data['layout']['thumbs_up'],$this->data['layout']['thumbs_down'], $this->data['id']);
+	}
+	
+	public function _rate($voted_by,$thumbs_up, $thumbs_down, $id)
+	{	
+		$voted_by = explode(',',$voted_by);
+		if(in_array($this->session->userdata['id'],$voted_by))
+		{
+			return false;
+		}
+		else
+		{
+			$voted_by = $this->session->userdata('id').',';
+			if($this->input->post('thumbs_up'))
+			{
+				$this->layouts->rate($thumbs_up+1,$thumbs_down,$id,$voted_by);
+			}
+			elseif($this->input->post('thumbs_down'))
+			{
+				$this->layouts->rate($thumbs_up,$thumbs_down+1,$id,$voted_by);
+			}
+		}
 	}
 	
 }

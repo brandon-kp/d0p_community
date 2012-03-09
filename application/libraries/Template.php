@@ -188,7 +188,7 @@ class Template
 	 * @param	string
 	 * @return	void
 	 */
-	public function build($view, $data = array(), $return = FALSE)
+	public function build($view, $data, $return = FALSE)
 	{
 		// Set whatever values are given. These will be available to all view files
 		is_array($data) OR $data = (array) $data;
@@ -197,7 +197,7 @@ class Template
 		$this->_data = array_merge($this->_data, $data);
 
 		// We don't need you any more buddy
-		unset($data);
+		//unset($data);
 
 		if (empty($this->_title))
 		{
