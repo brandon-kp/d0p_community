@@ -40,22 +40,27 @@
 	</div>
 	
 	<div id="new_layouts">
-		<span class="heading">My Buddie's newest Layouts</span>
-		<div>
-			<a href="#">
-				Layout Title<br />
-				<img src="http://192.168.0.13/community/index.php/images/index/6KCIdss.png" alt="" />
-			</a>
-		</div>
+		<span class="heading">My Buddies' Newest Layouts</span>
+		<ul>
+			<?php foreach($newest_layouts as $new_layout):?>
+			<li>
+				<a href="<?php echo site_url('layouts/review/'.$new_layout['id']);?>">
+					<?php echo $new_layout['title'];?><br />
+					<img src="http://i.imgur.com/<?php echo $new_layout['preview_image'];?>.png" alt="" />
+				</a>
+			</li>
+			<?php endforeach;?>
+		</ul>
 	</div>
 	
 	<div id="birthdays">
 		<span class="heading">Today's Birthdays</span>
 		<div>
-			<a href="#">Mr. Evil</a>
-			<a href="#">Mr. Evil</a>
-			<a href="#">Mr. Evil</a>
-			<a href="#">Mr. Evil</a>
+			<?php if(count($birthdays)>0):foreach($birthdays as $birthday):?>
+			<a class="bday" href="<?php echo site_url('~'.$birthday['id']);?>"><?php echo $birthday['name'];?></a>
+			<?php endforeach; else:?>
+			No birthdays today.<br /> <a href="http://wolframalpha.com">What are the odds?</a>
+			<?php endif;?>
 		</div>
 	</div>	
 </div>

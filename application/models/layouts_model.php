@@ -43,7 +43,7 @@ class Layouts_model extends CI_Model {
 		return $this->db->order_by('title', 'ASC')->get('layout_categories')->result_array();
 	}
 	
-	public function get_layouts($site, $category='null')
+	public function get_layouts($offset, $site, $category='null')
 	{
 		if(isset($site))
 		{
@@ -55,9 +55,10 @@ class Layouts_model extends CI_Model {
 		}
 		
 		return $this->db
+					->order_by('date','DESC')
 					->select('user_layouts.*, user_profile.name, user_profile.id AS user_id')
 					->join('user_profile', 'user_profile.id=user_layouts.submitted_by')
-					->get('user_layouts')->result_array();
+					->get('user_layouts', '15', $offset)->result_array();
 	}
 	
 	public function get_single_layout($id)

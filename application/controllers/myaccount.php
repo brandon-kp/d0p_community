@@ -7,8 +7,10 @@ class Myaccount extends CI_Controller {
 	{
 		parent::__construct();
 		check_login();
+		
 		$this->data['notifications'] = check_notifications();
 		$this->load->model('myaccount_model','myaccount');
+		$this->load->library('Myaccount_library');
 		$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		
 		$this->template->set_layout('logged_in.php');
@@ -18,6 +20,8 @@ class Myaccount extends CI_Controller {
 	{
 		$this->data['account_info']    = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		$this->data['account_updates'] = $this->myaccount->read_account_updates();
+		$this->data['birthdays']       = $this->myaccount_library->get_birthdays();
+		$this->data['newest_layouts']  = $this->myaccount_library->get_buddy_layouts();
 		
 		$account_type = $this->data['account_info']['account_type'];
 		

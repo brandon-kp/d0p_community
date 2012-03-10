@@ -42,14 +42,13 @@
 			</div>
 		<div id="main_nav">
 			<ul>
-				<li class="current"><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/index.php"><b>Home</b></a></li>
+				<li class="current"><a href="<?php echo site_url();?>"><b>Home</b></a></li>
 				<li><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/gens/index.php"><b>Generators</b></a></li>
-				<li><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/layouts/index.php"><b>Layouts</b></a></li>
+				<li><a href="<?php echo site_url('layouts');?>"><b>Layouts</b></a></li>
 				<li><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/videos/index.php"><b>Videos</b></a></li>
 				<li><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/tutorials/index.php"><b>Tutorials</b></a></li>
 				<li><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/image_fun/index.php"><b>Image Fun</b></a></li>
 				<li><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/forum/index.php"><b>Forum</b></a></li>
-				<li><a href="http://web.archive.org/web/20081211033154/http://www.skem9.com/layouts/myAccount.php"><b>My Account</b></a></li>
 			</ul>
 		</div>			
 			<?php echo $template['body']; ?>

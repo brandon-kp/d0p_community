@@ -25,4 +25,24 @@ class Myaccount_library_model extends CI_Model{
 		return $query;
 	}
 	
+	public function get_users_latest_layout($id)
+	{
+		if(is_array($id))
+		{
+			foreach($id as $ids)
+			{
+				$query = $this->db
+				->order_by('date','DESC')
+				->get_where('user_layouts',array('submitted_by'=>$ids['id']), 2, 0)
+				->result_array();
+				
+			}
+			return $query;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 }

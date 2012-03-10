@@ -27,4 +27,14 @@ class Myaccount_library {
 		return $users;
 	}
 	
+	public function get_buddy_layouts()
+	{
+		$layouts = array();
+		$this->ci->load->model('myaccount_library_model','mlm');
+		$buddies = $this->ci->mlm->get_buddies('36');
+		$layouts = $this->ci->mlm->get_users_latest_layout($buddies);
+		
+		return $layouts;
+	}
+	
 }

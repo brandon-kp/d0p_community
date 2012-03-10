@@ -33,12 +33,12 @@
 
 <div id="layouts_list">
 	<?php foreach($layouts as $layout):?>
-<table class="layHome" id="layout193420">
+<table class="layHome">
 	<tr>
 		<td class="layHead" colspan="2"><a href="<?php echo site_url('layouts/review/'.$layout['id']);?>"><?php echo $layout['title'];?></a></td>
 	</tr><tr>
 		<td class="layleft">Submited By <a href="<?php echo site_url('~').$layout['user_id'];?>"><?php echo $layout['name'];?></a><br /><i>6</i>&nbsp; hours ago
-		<br /> <a href="http://web.archive.org/web/20080102125522/http://www.skem9.com/layouts/reviews.php?layout=193420"><img src="http://i.imgur.com/<?php echo $layout['preview_image']?>.png" style="width:150px" alt="Preview" /></a><br /><a href="http://web.archive.org/web/20080102125522/http://www.skem9.com/layouts/LayoutPreview.php?layoutid=193420">Preview</a></td>
+		<br /> <a href="<?php echo site_url('layouts/review/'.$layout['id']);?>"><img src="http://i.imgur.com/<?php echo $layout['preview_image']?>.png" style="width:150px" alt="Preview" /></a><br /><a href="http://web.archive.org/web/20080102125522/http://www.skem9.com/layouts/LayoutPreview.php?layoutid=193420">Preview</a></td>
 		<td class="layright">
 			<span>Posters Notes:</span>
 			<div class="Pnotes"><?php echo $layout['notes'];?></div>
@@ -55,6 +55,7 @@
 	</tr>
 </table>
 	<?php endforeach;?>
+	<div class="MLine"><?php echo $pages;?></div>
 </div>
 	
 <style>

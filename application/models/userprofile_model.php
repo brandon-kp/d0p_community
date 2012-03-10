@@ -65,6 +65,7 @@ class Userprofile_model extends CI_Model {
 	public function get_buddies($id)
 	{
 		$query1 = $this->db
+					->select('user_relationships.*, user_profile.name, user_profile.photo, user_profile.id')
 					->join('user_profile','user_profile.id=user_relationships.user_2')
 					->where('user_1',$id)
 					->where('buddy','1')
@@ -73,6 +74,7 @@ class Userprofile_model extends CI_Model {
 					->result_array();
 					
 		$query2 = $this->db
+					->select('user_relationships.*, user_profile.name, user_profile.photo, user_profile.id')
 					->join('user_profile','user_profile.id=user_relationships.user_1')
 					->where('user_2',$id)
 					->where('buddy','1')

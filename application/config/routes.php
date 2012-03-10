@@ -40,7 +40,8 @@
 
 $route['default_controller'] = "myaccount";
 $route['404_override'] = '';
-$route['~(:num)'] = "userprofile/index/$1"; 
+$route['~(:num)'] = "userprofile/index/$1";
+#$route['images/(:any)'] = "images/index/$1";
 
 
 /* End of file routes.php */

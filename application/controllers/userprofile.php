@@ -176,5 +176,10 @@ class Userprofile extends CI_Controller {
 	{
 		$this->userprofile->post_comment($this->input->post('to'), $this->session->userdata('id'), $this->input->post('text'));
 	}
+	
+	public function birthday()
+	{
+		
+	}
 
 }

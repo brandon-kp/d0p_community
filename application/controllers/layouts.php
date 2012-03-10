@@ -10,7 +10,10 @@ class Layouts extends CI_Controller {
 		$this->load->helper('form');
 		$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		
-		$this->template->set_layout('logged_in.php');
+		if($this->session->userdata('id') !=='')
+		{
+			$this->template->set_layout('logged_in.php');
+		}
 	}
 	
 	//create	
@@ -101,20 +104,46 @@ class Layouts extends CI_Controller {
 	
 	public function site()
 	{
-		$offset = 0;
 		$this->params = $this->uri->uri_to_assoc(2);
+		$this->load->library('pagination');
+		
+		if(array_key_exists('page',$this->params) AND $this->params['page'] >1)
+		{
+			$offset = (
+						(20) * $this->params['page'] //20 * (example) 2 = 40
+						/
+						$this->params['page'] //40 divided by 2 = 20
+					); //and that's how you choose where to start selecting rows from the database
+		}
+		else
+		{
+			$offset = 0;
+		}
+		
 		$this->data['type'] = $this->layouts->get_single_type($this->params['site']);
 		$this->data['cats'] = $this->layouts->list_categories();
 		$this->data['site'] = $this->uri->segment(3);
 		
 		if(!isset($this->params['category']))
 		{
-			$this->data['layouts'] = $this->layouts->get_layouts($this->params['site']);
+			$this->data['layouts'] = $this->layouts->get_layouts($offset, $this->params['site']);
 		}
 		else
 		{
-			$this->data['layouts'] = $this->layouts->get_layouts($this->params['site'], $this->params['category']);
+			$this->data['layouts'] = $this->layouts->get_layouts($offset, $this->params['site'], $this->params['category']);
 		}
+		
+		$config['base_url'] = site_url('layouts/site/'.$this->data['site'].'/page/');
+		$config['total_rows'] = count($this->data['layouts']);
+		$config['per_page'] = 10;
+		$config['uri_segment'] = 4;
+		$config['num_links'] = 10;
+		$config['use_page_numbers'] = TRUE;
+		$config['cur_tag_open'] = '<span>';
+		$config['cur_tag_close'] = '</span>';
+		
+		$this->pagination->initialize($config);
+		$this->data['pages'] = $this->pagination->create_links();
 		
 		$this->template
 			->title('.^. Skem9 :: Profile Layouts .^.')
@@ -133,14 +162,16 @@ class Layouts extends CI_Controller {
 		$this->template
 			->title('.^. Skem9 :: Review Layout .^.')
 			->build('partials/layouts/layout_review', $this->data);
-		
-		$this->_rate($this->data['layout']['voted_by'],$this->data['layout']['thumbs_up'],$this->data['layout']['thumbs_down'], $this->data['id']);
 	}
 	
-	public function _rate($voted_by,$thumbs_up, $thumbs_down, $id)
-	{	
-		$voted_by = explode(',',$voted_by);
-		if(in_array($this->session->userdata['id'],$voted_by))
+	public function rate()
+	{
+		$this->data['id'] = $this->input->post('to');
+		$this->data['layout'] = $this->layouts->get_single_layout($this->data['id']);
+		$voted_by = explode(',',$this->data['layout']['voted_by']);
+		$thumbs_up = $this->data['layout']['thumbs_up'];
+		$thumbs_down = $this->data['layout']['thumbs_down'];
+		if(in_array($this->session->userdata('id'),$voted_by))
 		{
 			return false;
 		}
@@ -149,11 +180,11 @@ class Layouts extends CI_Controller {
 			$voted_by = $this->session->userdata('id').',';
 			if($this->input->post('thumbs_up'))
 			{
-				$this->layouts->rate($thumbs_up+1,$thumbs_down,$id,$voted_by);
+				$this->layouts->rate($thumbs_up+1,$thumbs_down,$this->data['id'],$voted_by);
 			}
 			elseif($this->input->post('thumbs_down'))
 			{
-				$this->layouts->rate($thumbs_up,$thumbs_down+1,$id,$voted_by);
+				$this->layouts->rate($thumbs_up,$thumbs_down+1,$this->data['id'],$voted_by);
 			}
 		}
 	}

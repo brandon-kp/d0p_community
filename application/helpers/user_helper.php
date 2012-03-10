@@ -50,7 +50,6 @@ function check_notifications()
 	$ci->load->model('user_helper');
 	$id = $ci->session->userdata('id');
 	$notification = array();
-	
 	//check for new private messages
 	$msgs = $ci->user_helper->check_new_messages($id);
 	if(count($msgs) > 0)
@@ -76,7 +75,7 @@ function check_notifications()
 	
 	//check for new comments
 	$coms = $ci->user_helper->check_new_comments($id);
-	if(count($coms) > 0)
+	if($ci->session->userdata('id') !== '' AND count($coms) > 0)
 	{
 		$notification['new_comments'] = TRUE;
 	}
