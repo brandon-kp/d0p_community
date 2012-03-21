@@ -11,17 +11,17 @@ class Userprofile extends CI_Controller {
 		$this->load->helper('date');
 		$this->data['notifications'] = check_notifications();
 		
-		if($this->session->userdata('login_session') !== '')
+		if($this->session->userdata('id') !== '')
 		{
 			$this->template->set_layout('logged_in.php');
+			$this->load->model('myaccount_model','myaccount');
+			$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		}
 		else
 		{
 			$this->template->set_layout('default.php');
 		}
 		
-		$this->load->model('myaccount_model','myaccount');
-		$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		$this->id = str_replace('~','',$this->uri->segment(3));
 		
 		if(empty($this->id))
@@ -31,6 +31,10 @@ class Userprofile extends CI_Controller {
 	}
 	public function index()
 	{
+		if($this->uri->segment(3) == '')
+		{
+			$this->id = str_replace('~','',$this->uri->segment(1));
+		}
 		$this->load->helper('form');
 		$this->data['profiledata'] = $this->userprofile->userprofile($this->id);
 		$this->data['buddies']     = $this->userprofile->get_buddies($this->id);

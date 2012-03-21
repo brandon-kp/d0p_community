@@ -69,11 +69,11 @@ class CI_Security {
 	 * @access protected
 	 */
 	protected $_never_allowed_str = array(
-					'document.cookie'	=> '[removed]',
-					'document.write'	=> '[removed]',
-					'.parentNode'		=> '[removed]',
-					'.innerHTML'		=> '[removed]',
-					'window.location'	=> '[removed]',
+					'document.cookie'	=> 'tryahrder',
+					'document.write'	=> 'tryahrder',
+					'.parentNode'		=> 'tryahrder',
+					'.innerHTML'		=> 'tryahrder',
+					'window.location'	=> 'tryahrder',
 					'-moz-binding'		=> '[removed]',
 					'<!--'				=> '&lt;!--',
 					'-->'				=> '--&gt;',
@@ -89,10 +89,10 @@ class CI_Security {
 	 * @access protected
 	 */
 	protected $_never_allowed_regex = array(
-					"javascript\s*:"			=> '[removed]',
-					"expression\s*(\(|&\#40;)"	=> '[removed]', // CSS and IE
-					"vbscript\s*:"				=> '[removed]', // IE, surprise!
-					"Redirect\s+302"			=> '[removed]'
+					"javascript\s*:"			=> 'tryahrder',
+					"expression\s*(\(|&\#40;)"	=> 'tryahrder', // CSS and IE
+					"vbscript\s*:"				=> 'tryahrder', // IE, surprise!
+					"Redirect\s+302"			=> 'tryahrder'
 	);
 
 	/**

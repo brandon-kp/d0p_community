@@ -123,11 +123,11 @@ class CI_Pagination {
 		// Calculate the total number of pages
 		$num_pages = ceil($this->total_rows / $this->per_page);
 
-		// Is there only one page? Hm... nothing more to do here then.
+		/* Is there only one page? Hm... nothing more to do here then.
 		if ($num_pages == 1)
 		{
 			return '';
-		}
+		}*/
 
 		// Set the base page index for starting page number
 		if ($this->use_page_numbers)

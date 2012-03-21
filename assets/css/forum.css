@@ -1,0 +1,103 @@
+input.submit {width:130px; height:25px; background:url(http://web.archive.org/web/20070214043720/http://www.skem9.com/images/blue_site_theme/submit_butt.gif) no-repeat center;border:0px; cursor:pointer;}
+input.subGrey {width:130px; height:25px; background:url(http://web.archive.org/web/20070214043720/http://www.skem9.com/images/blue_site_theme/grey_butt.gif) no-repeat center;border:0px; color:#fff; cursor:pointer; font-weight:bold;}
+.centered, #sneak {text-align:center;}
+
+
+.mainForum {padding-bottom:20px; text-align:center;}
+.mainForum {padding-bottom:20px; text-align:center;}
+
+.cats {background:url(http://web.archive.org/web/20070214043720/http://www.skem9.com/forum/imgs/catNoNew.jpg) left center no-repeat; width:550px; margin:10px auto; text-align:left; border:.5px solid #242424; padding:3px 3px 3px 70px;}
+.NewPostCat {background:url('images/catNew.jpg') no-repeat left center;}
+.smallText {color:#747474; font-size:80%;}
+.smallText i {font-style:normal;}
+.catSmallDesc {padding-left:10px;}
+
+.top_links, #breadcrumb {text-indent:5px; text-align:left; line-height:35px; border-bottom:1px solid #6e9dd4; width:620px;}
+.top_links select, .top_links option {background:#333; color:#0af; border:1px solid #525252;}
+.Errors {margin:10px 15px; background:#FF768C; padding:10px;}
+.Errors b {color:black; font-size:15pt; font-family:georgia; display:block;}
+.clear {clear:both; width:100%; height:20px;}
+.spons {width:200px; margin:0; float:right;}
+.ForumComs {text-align:left; float:left; width:600px; margin:0;padding:5px;border-bottom:1px solid #6e9dd4;}
+.LeftSide {width:100px; float:left; color:#ddd; font-size:9pt; text-align:center;}
+.message {float:left; width:490px; margin-left:10px;}
+.message p.TimeStamp {color:#666; margin:0; text-indent:10px; font-size:11px; border-bottom:.1em solid #222;}
+.message p.TimeStamp span {padding-left:10px; font-style:italic;}
+.message p.TimeStamp em {float:right; padding-right:10px; font-style:normal;}
+.message .commentBody {overflow:auto; width:490px; margin-top:20px; padding-bottom:5px;}
+.Signature {color:#888; text-align:center; font-size:8pt; border-top:1px solid; margin-top:40px;}
+
+.UserRating {color:#0af;clear:both; text-align:center; background:#222; line-height:25px;}
+#ForumNotes {background:#222; border:1px solid #6e9dd4; float:left; width:600px; padding:5px;}
+#ForumNotes b {display:block; font-size:15px; text-align:left; text-indent:15px; text-transform:uppercase; font-family:tahoma; letter-spacing:-1px; color:#78C0FF;}
+
+.topics {text-align:left; float:left; width:600px; margin:0 0 5px 0;padding:5px; background-image:url(images/thread_old.gif); background-position: left center; background-repeat: no-repeat;}
+.topics p {margin:0; padding:0 0 0 60px;}
+.topics p.topicsTitle {font-weight:bold; text-indent:15px;}
+.topics p.topicsSmall, .topics p.topicLast {font-size:11px; color:#999; line-height:17px;}
+.topics p.topicsSmall i, .topics p.topicLast i {font-style:normal; color:#bbb;}
+.UserRating .quote {float:left; width:70px;}
+.odd {background-color:#111 !important; border:1px solid #333 !important; }
+.even {border:1px solid #222 !important;}
+#breadcrumb span{font-size:17px;}
+
+.browse {float:left;background:#545454 url(images/head_off.gif); padding:4px;text-indent:25px; width:600px; text-align:left;}
+.browse a, .browse a:visited {background:transparent; border:1px solid #545454; padding:3px; color:#000; text-decoration:none;}
+.browse a:hover, .browse a:active, .browse a:focus {background:#242424; border:1px solid #000; color:#6E9DD4;}
+.browse span {background:#B4B4B4; padding:3px; color:#000; border:1px solid #000;}
+
+.new {border:1px solid #6e9dd4 !important; background-image:url(images/thread_new.gif); background-position: left center; background-repeat: no-repeat;}
+
+.message blockquote {background:#222; padding:4px 4px 4px 8px; border-left:6px double #0af; border-top:3px solid black; border-bottom:3px solid black; color:#7C7C7C;}
+.message blockquote cite {display:block; border-bottom:1px solid #000; text-indent:10px;}
+.message code {display:block; overflow:auto; width:80%; margin-left:30px; background:#0af; color:#222; padding:5px; border-width:5px; font-size:11px; border-style:solid; border-color:#000 #333; padding-bottom:5px;}
+.message code b.CodeTitle {display:block; color:#0af; background:#000; margin:-5px -5px 0 -5px; text-indent:5px; font-size:14px;}
+
+#botBox {width:600px; margin:0 auto; background:#111 url(http://web.archive.org/web/20070214043720/http://www.skem9.com/forum/imgs/topPosters.gif) no-repeat top left; border:1px solid #333; padding:5px;}
+#botBox ul {list-style-type:none; margin-top:30px;}
+#botBox li {margin-bottom:3px; text-align:left; width:275px; float:right; clear:right;}
+#botBox li.goLeft {float:left; clear:left;}
+
+#botSpons {margin:0;}
+#botSpons p {border-bottom:1px solid #999; margin-top:0;line-height:30px; text-indent:30px;}
+#botSpons p a {padding:5px 15px; background:#333;}
+#botSpons p a:hover {background:#639dd4; border:1px solid #333; color:#000;}
+.menuBar {list-style-type:none; margin-left:-40px; width:150px;}
+.menuBar li {text-align:center; line-height:25px; margin:0; width:150px; text-indent:10px;}
+.menuBar li a {display:block; margin:0; border: 1px solid #000;}
+.menuBar li a:hover {background:#222; border:1px solid #6e9dd4;}
+.locked {background-image:url(images/lockedrd3.gif);}
+
+#ForumReply {text-align:left; margin:5px 5px; width:590px; float:left; }
+#ForumReply p {text-indent:20px; font-size:15px; font-family:georgia; background:#222; line-height:20px; border-bottom:1px dotted #0af;}
+#ForumReply input {width:50%; background:#333; border:1px inset #999; padding:2px 5px; color:#0af;}
+#ForumReply textarea {background:#333; border:1px double #6e9dd4; padding:5px; color:#eee; width:400px; height:250px;margin-top:10px;}
+#ForumReply input:focus, #ForumReply textarea:focus {background:#111; border-color:#6e9dd4;}
+
+#ForumPostBox {background:#333; width:200px; float:right; height:500px;}
+#ForumPostBox input {background:#6e9dd4; font-weight:bold; border-color:#000;}
+
+
+.errors {background:#FF768C;}
+.errors li {color:#000; padding:5px;}
+#BBCodes h3, #ReplyComms h3 {color:#0af; background:#222; border-bottom:1px dotted #6e9dd4; text-indent:10px; width:610px;}
+#BBCodes i {color:#999;}
+
+#ReplyComms textarea {width:580px; height:150px; background:#333; border:1px solid #0af; color:#aaa; padding:5px;}
+.top_links span {float:right;}
+
+.topicLast span a {padding:1px 3px; margin:0 3px; background:#242424; border:.5px solid #666;}
+.topicLast span a:hover {color:#999; background:#000; border-color:#6e9dd4;}
+
+#C_10572 img, #C_10571 img, #C_4548 .commentBody img {width:100px;}
+
+::-moz-selection{
+	background: #6FA3FF;
+	color: #000;
+}
+
+::selection {
+	background: #6FA3FF;
+	color: #000;
+}
+.spons a{display:block; background:#444; text-align:center; padding:2px; border:1px solid #6FA3FF; margin:3px auto;}

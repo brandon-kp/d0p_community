@@ -86,3 +86,29 @@ function check_notifications()
 	return $notification;
 	
 }
+
+function postcount_taglines($count)
+{
+	$tags = array(
+	'0'=>' - No posts... How is this even here?',
+	'1'=>' - Not a virgin? ... Skank.',
+	'2'=>' - You\'re on a roll, keep going!',
+	'3'=>' - It\'s getting fun, huh?',
+	'5'=>' - At this point you may as well become a "regular".',
+	'8'=>' - You sure know how to carry a conversation.',
+	'13'=>' - A few people know your name by now.',
+	'21'=>' - Somewhere between legal drinking age and Rob Quivers\' narcissism score.',
+	'34'=>' - Shouldn\'t you be in bed by now?',
+	'55'=>' Brilliant contributions.',
+	'89'=>' - Basically a regular.'
+	);
+	//144 233 377 610 987 1597 2584 4181 6765
+	
+	foreach($tags as $key=>$value)
+	{
+		if($count <= $key)
+		{
+			return $value;
+		}
+	}
+}

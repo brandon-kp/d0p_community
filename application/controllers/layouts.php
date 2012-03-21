@@ -189,4 +189,9 @@ class Layouts extends CI_Controller {
 		}
 	}
 	
+	public function userlayouts()
+	{
+		
+	}
+	
 }
