@@ -51,10 +51,18 @@ class Tutorials_model extends CI_Model {
 	public function top_rated_tutorials()
 	{
 		$this->db->join('user_profile','user_profile.id=tutorials.submitter');
-		$this->db->select('tutorials.title, tutorials.thumbs_up, user_profile.name, user_profile.id as userid, tutorials.date, tutorials.description');
-		$top = $this->db->get('tutorials')->result_array();
-		var_dump($top);
+		$this->db->select('tutorials.id, tutorials.tags, tutorials.title, tutorials.thumbs_up, user_profile.name, user_profile.id as userid, tutorials.date, tutorials.description');
+		$this->db->order_by('thumbs_up','DESC');
+		$top = $this->db->get_where('tutorials', array('approved'=>'1'))->result_array();
 		return $top;
+	}
+	
+	public function newest_tutorials()
+	{
+		$this->db->order_by('date','DESC');
+		$this->db->select('title, tags, id');
+		$new = $this->db->get_where('tutorials', array('approved'=>'1'))->result_array();
+		return $new;
 	}
 	
 }

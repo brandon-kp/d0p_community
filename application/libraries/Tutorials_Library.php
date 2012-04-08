@@ -85,4 +85,9 @@ class Tutorials_library extends CI_Controller {
 		return $this->tutorials->top_rated_tutorials();
 	}
 	
+	public function newest_tutorials()
+	{
+		return $this->tutorials->newest_tutorials();
+	}
+	
 }

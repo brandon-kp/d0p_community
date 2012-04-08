@@ -15,13 +15,25 @@
 <div class="clear"></div>
 
 <div class="midSect">
-	<h3>Top Rated Guides</h3>
+	<h3>Top Rated Tutorials</h3>
 	<?php foreach($top_rated as $tuts):?>
 	<div class="tut">
-		<p class="tit"><a href="#"><?php echo $tuts['title'];?></a> <span class="goRigh"><?php echo $tuts['thumbs_up'];?> Votes</span></p>
+		<p class="tit"><a href="<?php echo site_url('tutorials/viewtutorial/'.$tuts['id']);?>"><?php echo $tuts['title'];?></a> <span class="goRigh"><?php echo $tuts['thumbs_up'];?> Votes</span></p>
 		<p class="bb">Submitted By::. <a href="<?php echo $tuts['userid'];?>"><?php echo $tuts['name'];?></a> @ <?php echo date('m/d/y, g:ia',$tuts['date']);?></p>
 		<p class="short"><?php echo $tuts['description'];?></p>
+		<p class="tags"><img src="<?php echo base_url('assets/images/tags.gif');?>" alt="tags" />&nbsp;&nbsp;&nbsp;<?php echo $tuts['tags'];?></p>
 	</div>
+	<?php endforeach;?>
+</div>
+
+<div class="Tbox">
+	<h3>Newest Tutorials</h3>
+	<?php foreach($newest as $tut):?>
+	<p class="bil">
+		<a class="Tti" href="<?php echo site_url('tutorials/viewtutorial/'.$tut['id']);?>"><?php echo $tut['title'];?></a><br />
+		<img src="<?php echo base_url('assets/images/tags.gif');?>" alt="tags" /> &nbsp;&nbsp;&nbsp;
+		<?php echo $tut['tags'];?>
+	</p>
 	<?php endforeach;?>
 </div>
 

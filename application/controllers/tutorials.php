@@ -23,6 +23,7 @@ class Tutorials extends CI_Controller {
 	{
 		$this->data['cats'] = $this->tutorials_library->get_all_categories();
 		$this->data['top_rated'] = $this->tutorials_library->top_rated_tutorials();
+		$this->data['newest'] = $this->tutorials_library->newest_tutorials();
 		$this->template
 			->title('.^. Skem9 :: Tutorials .^.')
 			->build('partials/tutorials/view_tutorials',$this->data);
