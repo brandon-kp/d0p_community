@@ -10,7 +10,7 @@ class Layouts extends CI_Controller {
 		$this->load->helper('form');
 		$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		
-		if($this->session->userdata('id') !=='')
+		if($this->session->userdata('login_session'))
 		{
 			$this->template->set_layout('logged_in.php');
 		}
@@ -38,13 +38,12 @@ class Layouts extends CI_Controller {
 		$errors = array();
 		$config['upload_path'] = 'uploads/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		$config['max_width']  = '300';
-		$config['max_height']  = '300';
+		$config['max_width']  = '2000';
+		$config['max_height']  = '2000';
 
 		$this->load->library('upload', $config);
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('title','Title', 'required');
-		//$this->form_validation->set_rules('userfile','Preview Image', 'required');
 		$this->form_validation->set_rules('notes','Notes', 'required');
 		$this->form_validation->set_rules('tos','Terms of Service', 'required');
 		
@@ -58,6 +57,15 @@ class Layouts extends CI_Controller {
 			$upload_info = array('upload_data'=>$this->upload->data());
 			$file        = $upload_info['upload_data']['full_path'];
 			$handle = fopen($file, "r");
+			
+			$config_il['source_image'] = 'uploads/'.$upload_info['upload_data']['file_name'];
+			$config_il['maintain_ratio'] = TRUE;
+			$config_il['width'] = 640;
+			$config_il['height'] = 480;
+			$config_il['quality'] = '50';
+			$this->load->library('image_lib', $config_il);
+			$this->image_lib->resize();
+			
 			$data = file_get_contents($file);
 			
 			$pvars = array(
@@ -89,8 +97,6 @@ class Layouts extends CI_Controller {
 		
 		return $errors;
 	}
-	
-	
 	
 	//read
 	public function index()
@@ -164,6 +170,55 @@ class Layouts extends CI_Controller {
 			->build('partials/layouts/layout_review', $this->data);
 	}
 	
+	
+	
+	public function userlayouts()
+	{
+		check_login();
+		$this->load->library('Pagination2');
+		$params = $this->uri->uri_to_assoc();
+		
+		if($params['user'] !== false)
+		{
+			$user = $params['user'];
+		}
+		else
+		{
+			$user = $this->session->userdata('id');
+		}
+		
+		if($params['page'] >1)
+		{
+			$offset = (
+						(15) * $params['page'] //20 * (example) 2 = 40
+						/
+						$params['page'] //40 divided by 2 = 20
+					); //and that's how you choose where to start selecting rows from the database
+		}
+		else
+		{
+			$offset = 0;
+		}
+		
+		$config['base_url'] = site_url('layouts/userlayouts/user/'.$user.'/page/');
+		$config['total_rows'] = $this->layouts->count_layouts($user);
+		$config['per_page'] = 15;
+		$config['uri_segment'] = 4;
+		$config['num_links'] = 10;
+		$config['use_page_numbers'] = TRUE;
+		$config['first_link'] = '1';
+		
+		$this->pagination2->initialize($config);
+		$this->data['pages'] = $this->pagination2->page_array();
+		$this->data['layouts'] = $this->layouts->get_user_layouts($user, $offset);
+		
+		$this->template
+			->title('.^. Skem9 :: User Layouts .^.')
+			->build('partials/layouts/user_layouts', $this->data);
+	}
+	
+
+	//update
 	public function rate()
 	{
 		$this->data['id'] = $this->input->post('to');
@@ -187,11 +242,6 @@ class Layouts extends CI_Controller {
 				$this->layouts->rate($thumbs_up,$thumbs_down+1,$this->data['id'],$voted_by);
 			}
 		}
-	}
-	
-	public function userlayouts()
-	{
-		
 	}
 	
 }

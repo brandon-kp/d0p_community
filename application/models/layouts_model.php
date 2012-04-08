@@ -81,4 +81,17 @@ class Layouts_model extends CI_Model {
 			->update('user_layouts',array('thumbs_up'=>$thumbs_up, 'thumbs_down'=>$thumbs_down, 'voted_by'=>$by));
 	}
 	
+	public function get_user_layouts($user, $offset)
+	{
+				 $this->db->select('user_layouts.title, user_layouts.id, user_layouts.preview_image, user_layouts.notes, user_layouts.thumbs_up, user_layouts.thumbs_down');
+		$query = $this->db->get_where('user_layouts',array('submitted_by'=>$user), 15, $offset)->result_array();
+		
+		return $query;
+	}
+	
+	public function count_layouts($user)
+	{
+		return count($this->db->select('id')->get_where('user_layouts',array('submitted_by'=>$user))->result_array());
+	}
+	
 }

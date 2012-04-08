@@ -13,4 +13,5 @@
 <span class="toolbar_title">Layouts</span>
 <ul>
 	<li><a href="<?php echo site_url('layouts/addlayout');?>">Add a Layout</a></li>
+	<li><a href="<?php echo site_url('layouts/userlayouts');?>">My Layouts</a></li>
 </ul>

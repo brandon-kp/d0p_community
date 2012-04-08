@@ -13,7 +13,6 @@ class Forum extends CI_Controller {
 		$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		$this->data['notifications'] = check_notifications();
 		
-		#var_dump($this->session);
 		if($this->session->userdata('login_session'))
 		{
 			$this->template->set_layout('logged_in.php');
@@ -33,6 +32,8 @@ class Forum extends CI_Controller {
 	
 	public function category()
 	{
+		$this->load->library('Pagination');
+		
 		$this->data['cat_info'] = $this->forum_library->cat_info($this->uri->segment(3));
 		$this->data['categories'] = $this->forum_library->get_categories();
 		$this->data['topics']     = $this->forum_library->get_cat_topics($this->uri->segment(3));
@@ -75,10 +76,25 @@ class Forum extends CI_Controller {
 		//this is only executed if POST was sent
 		$this->forum_library->handle_post($this->input->post());
 		
+		$this->load->library('Pagination');
+		
 		$this->data['cat_info'] = $this->forum_library->cat_info($this->uri->segment(4));
 		$this->data['coms']     = $this->forum_library->comments($this->uri->segment(3),$this->uri->segment(4));
 		$this->data['reply']    = $this->forum_library->forum_reply_box();
 		
+		$config['base_url'] = site_url('forum/comments/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/');
+		$config['total_rows'] = $this->forum_library->count_comments($this->uri->segment(3));
+		$config['per_page'] = '15';
+		$config['uri_segment'] = 5;
+		$config['first_link'] = '1';
+		$config['cur_tag_open'] = '<span class="pdot">';
+		$config['cur_tag_close'] = '</span>';
+		$config['use_page_numbers'] = TRUE;
+		$config['prev_link'] = FALSE;
+		$config['next_link'] = FALSE;
+		
+		$this->pagination->initialize($config);
+		$this->data['pages'] = $this->pagination->create_links();
 		$this->template
 			->title('.^. Skem9 :: '.$this->data['coms'][0]['title'].' .^.')
 			->build('partials/forum/comments', $this->data);
@@ -86,7 +102,17 @@ class Forum extends CI_Controller {
 	
 	public function testing()
 	{
-		var_dump($this->forum_library->postcount_taglines('14'));
+		$this->data['coms']     = $this->forum_library->comments($this->uri->segment(3),$this->uri->segment(4));
+		$this->load->library('Pagination');
+		
+		$config['base_url'] = site_url('forum/comments/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/');
+		$config['total_rows'] = $this->forum_library->count_comments();
+		$config['per_page'] = '15';
+		$config['uri_segment'] = 5;
+		$config['first_link'] = '1';
+		 
+		echo $this->pagination->create_links();
+		var_dump($this->data['coms']);
 	}
 	
 }

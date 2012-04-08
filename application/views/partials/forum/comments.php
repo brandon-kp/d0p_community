@@ -13,6 +13,10 @@
 	<strong><?php echo $coms[0]['title'];?></strong>
 </div>
 
+<div class="browse">
+<?php echo $pages;?>
+</div>
+
 <?php foreach($coms as $com):?>
 <div class="ForumComs">
 	<div class="LeftSide">
@@ -36,6 +40,10 @@
 <?php endforeach;?>
 
 <div class="clear"></div>
+
+<div class="browse">
+<?php echo $pages;?>
+</div>
 
 <div id="ReplyComms">
 	<?php echo $reply;?>

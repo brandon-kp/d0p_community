@@ -52,11 +52,23 @@ class Forum_library {
 	
 	public function comments($topic,$id)
 	{
-		return $this->ci->forum_model->comments($id, $topic, '15', '0');
+		if($this->ci->uri->segment(5) >1)
+		{
+			$offset = (
+						(15) * $this->ci->uri->segment(5) //20 * (example) 2 = 40
+						/
+						$this->ci->uri->segment(5) //40 divided by 2 = 20
+					); //and that's how you choose where to start selecting rows from the database
+		}
+		else
+		{
+			$offset = 0;
+		}
+		return $this->ci->forum_model->comments($id, $topic, '15', $offset);
 	}
-	public function count_comments()
-	{ echo count($this->ci->forum_model->count_comments($this->ci->uri->segment(3)));
-		return count($this->ci->forum_model->count_comments($this->ci->uri->segment(3)));
+	public function count_comments($topic)
+	{
+		return count($this->ci->forum_model->count_comments($topic));
 	}
 	
 	public function forum_reply_box()
