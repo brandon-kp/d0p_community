@@ -41,6 +41,13 @@ class Tutorials_model extends CI_Model {
 		return $query[0];
 	}
 	
+	public function rate($thumbs_up,$thumbs_down,$id,$by)
+	{
+		$this->db
+			->where('id',$id)
+			->update('tutorials',array('thumbs_up'=>$thumbs_up, 'thumbs_down'=>$thumbs_down, 'voted_by'=>$by));
+	}
+	
 	public function get_all_categories()
 	{
 		$cats['subcats'] = $this->db->get('tutorial_subcategories')->result_array();

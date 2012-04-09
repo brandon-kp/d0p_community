@@ -24,9 +24,6 @@
 		</div>
 	</div>
 </div>
-
-
-
 <style type="text/css">
 
 .clear {clear:both;}
@@ -74,7 +71,7 @@
 
 <script>
 $('#thumbs_up').click(function(){
-	var data = 'action=rating&thumbs_up=true&to=<?php echo $id;?>';
+	var data = 'action=rating&thumbs_up=true&to=<?php echo $this->uri->segment(3);?>';
 	$.ajax({
 		  type: 'POST',
 		  url: "<?php echo site_url('tutorials/rate');?>",
@@ -88,13 +85,12 @@ $('#thumbs_up').click(function(){
 	return false;	
 });
 $('#thumbs_down').click(function(){
-	var data = 'action=rating&thumbs_down=true&to=<?php echo $id;?>';
+	var data = 'action=rating&thumbs_down=true&to=<?php echo $this->uri->segment(3);?>';
 	$.ajax({
 		  type: 'POST',
 		  url: "<?php echo site_url('tutorials/rate');?>",
 		  data: data
 		}).done(function( response ) {
-			alert(response);
 			$('.rate')
 				.slideUp('slow',function(){
 					$('#thanks_for_rating').slideDown("slow");

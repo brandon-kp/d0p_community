@@ -49,13 +49,11 @@ class Tutorials_library extends CI_Controller {
 	
 	public function rate()
 	{
-		var_dump($this->input->post());
-		/*
 		$this->data['id'] = $this->input->post('to');
 		$this->data['tutorial'] = $this->tutorials->get_tutorial($this->data['id']);
-		$voted_by = explode(',',$this->data['layout']['voted_by']);
-		$thumbs_up = $this->data['layout']['thumbs_up'];
-		$thumbs_down = $this->data['layout']['thumbs_down'];
+		$voted_by = explode(',',$this->data['tutorial']['voted_by']);
+		$thumbs_up = $this->data['tutorial']['thumbs_up'];
+		$thumbs_down = $this->data['tutorial']['thumbs_down'];
 		if(in_array($this->session->userdata('id'),$voted_by))
 		{
 			return false;
@@ -65,14 +63,13 @@ class Tutorials_library extends CI_Controller {
 			$voted_by = $this->session->userdata('id').',';
 			if($this->input->post('thumbs_up'))
 			{
-				$this->layouts->rate($thumbs_up+1,$thumbs_down,$this->data['id'],$voted_by);
+				$this->tutorials->rate($thumbs_up+1,$thumbs_down,$this->data['id'],$voted_by);
 			}
 			elseif($this->input->post('thumbs_down'))
 			{
-				$this->layouts->rate($thumbs_up,$thumbs_down+1,$this->data['id'],$voted_by);
+				$this->tutorials->rate($thumbs_up,$thumbs_down+1,$this->data['id'],$voted_by);
 			}
 		}
-		*/
 	}
 	
 	public function get_all_categories()
