@@ -74,4 +74,9 @@ class Tutorials_model extends CI_Model {
 		return $tagged;
 	}
 	
+	public function get_for_cat($cat)
+	{
+		
+	}
+	
 }

@@ -95,4 +95,9 @@ class Tutorials_library extends CI_Controller {
 		return $this->tutorials->search_tag($this->uri->segment(3));
 	}
 	
+	public function get_for_cat()
+	{
+		return $this->tutorials->get_for_cat($this->uri->segment(3));
+	}
+	
 }

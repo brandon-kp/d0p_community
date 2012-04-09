@@ -19,6 +19,8 @@
 				</div>
 			</p>
 			<div id="updatedLine"></div>
+			
+			<?php echo $comments['coms'].$comments['form'];?>
 		</div>
 	</div>
 </div>
@@ -62,8 +64,8 @@
 #gridTable td {width:10px;}
 .MAforms textarea {background-color:#333333; color:#ddd; padding:5px; border-color:#0af;}
 .ShortDesc {padding:10px; border-bottom:1px solid #555;}
-.ComsError {background:url(/images/blue_site_theme/head_on.gif); color:#000; font-weight:bold; text-indent:10px; padding:5px; margin:5px;}
-.commentsPeps {margin:0px 10px 3px 10px; width:690px; border:1px inset #525252; padding:5px; background:url(http://web.archive.org/web/20080914123012/http://www.skem9.com//images/blue_site_theme/foot_bg.gif) repeat-x top #000;}
+.ComsError {background:url(<?php echo base_url();?>assets/css/images/head_on.gif); color:#000; font-weight:bold; text-indent:10px; padding:5px; margin:5px;}
+.commentsPeps {margin:0px 10px 3px 10px; width:690px; border:1px inset #525252; padding:5px; background:url(<?php echo base_url();?>assets/css/images/foot_bg.gif) repeat-x top #000;}
 .commentsPeps span.comName {display:block; text-indent:15px; background:#242424; padding:5px 0px; text-align:left;}
 .commentsPeps .commentMess {float:right; width:585px; text-align:left;}
 .commentsPeps .comImg {float:left;}

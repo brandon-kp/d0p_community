@@ -10,6 +10,7 @@ class Tutorials extends CI_Controller {
 		$this->load->model('myaccount_model','myaccount');
 		$this->load->model('tutorials_model','tutorials');
 		$this->load->helper('form');
+		$this->load->library('Comments');
 		$this->load->library('Tutorials_Library');
 		$this->data['userprofile'] = $this->myaccount->for_account_page($this->session->userdata('login_session'));
 		
@@ -42,7 +43,9 @@ class Tutorials extends CI_Controller {
 	
 	public function viewtutorial()
 	{
-		$this->data['tutorial'] = $this->tutorials_library->get_tutorial();
+		$this->data['comments']['form'] = $this->comments->post_comment('2', $this->uri->segment(3));
+		$this->data['comments']['coms'] = $this->comments->get_comments('2', $this->uri->segment(3));
+		$this->data['tutorial']         = $this->tutorials_library->get_tutorial();
 		$this->template
 			->title('.^. Skem9 :: '.$this->data['tutorial']['title'].' .^.')
 			->build('partials/tutorials/view_tutorial', $this->data);
