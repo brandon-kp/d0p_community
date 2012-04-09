@@ -112,3 +112,17 @@ function postcount_taglines($count)
 		}
 	}
 }
+
+function format_tutorial_tags($tags)
+{
+	#$tags = str_replace(', ', ',', $tags);
+	$tags = explode(',',$tags);
+	foreach($tags as $tag)
+	{
+		$newtags[] = '<a href="'.site_url('tutorials/tag/'.rawurlencode($tag)).'">'.$tag.'</a>';
+	}
+	
+	$tags = implode(', ',$newtags);
+	
+	return $tags;
+}

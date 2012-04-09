@@ -48,6 +48,15 @@ class Tutorials extends CI_Controller {
 			->build('partials/tutorials/view_tutorial', $this->data);
 	}
 	
+	public function tag()
+	{
+		$this->data['tag'] = rawurldecode($this->uri->segment(3));
+		$this->data['results_for_tag'] = $this->tutorials_library->search_tag();
+		$this->template
+			->title('.^. Skem9 :: Tutorials Tagged "'.$this->data['tag'].'" .^.')
+			->build('partials/tutorials/search_tags', $this->data);
+	}
+	
 	public function rate()
 	{
 		$this->tutorials_library->rate();

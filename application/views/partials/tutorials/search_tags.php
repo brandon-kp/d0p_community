@@ -1,40 +1,12 @@
-<div class="doTheBrowse">
-	<h3>Tutorial Categories</h3>
-	<?php foreach($cats['maincats'] as $main):?>
-	<div class="box">
-		<p class="a"><?php echo $main['title'];?></p>
-		<ul>
-			<?php foreach($cats['subcats'] as $subs): if($subs['parent'] == $main['id']):?><li>
-				<a href="<?php echo site_url('tutorials/browse/'.$main['id'].'/'.$subs['id']);?>"><?php echo $subs['title'];?></a>
-			</li><?php endif; endforeach;?>
-		</ul>
-	</div>
-	<?php endforeach;?>
-</div>
-
-<div class="clear"></div>
-
 <div class="midSect">
-	<h3>Top Rated Tutorials</h3>
-	<?php foreach($top_rated as $tuts):?>
+	<h3>Tutorials with tags matching "<?php echo $tag;?>"</h3>
+	<?php foreach($results_for_tag as $tuts):?>
 	<div class="tut">
 		<p class="tit"><a href="<?php echo site_url('tutorials/viewtutorial/'.$tuts['id']);?>"><?php echo $tuts['title'];?></a> <span class="goRigh"><?php echo $tuts['thumbs_up'];?> Votes</span></p>
 		<p class="bb">Submitted By::. <a href="<?php echo $tuts['userid'];?>"><?php echo $tuts['name'];?></a> @ <?php echo date('m/d/y, g:ia',$tuts['date']);?></p>
 		<p class="short"><?php echo $tuts['description'];?></p>
 		<p class="tags"><img src="<?php echo base_url('assets/images/tags.gif');?>" alt="tags" />&nbsp;&nbsp;&nbsp;<?php echo $tuts['tags'];?></p>
 	</div>
-	<?php endforeach;?>
-</div>
-
-<div class="Tbox">
-	<pre><?php var_dump(format_tutorial_tags('tag1, tag2, tag3'));?></pre>
-	<h3>Newest Tutorials</h3>
-	<?php foreach($newest as $tut):?>
-	<p class="bil">
-		<a class="Tti" href="<?php echo site_url('tutorials/viewtutorial/'.$tut['id']);?>"><?php echo $tut['title'];?></a><br />
-		<img src="<?php echo base_url('assets/images/tags.gif');?>" alt="tags" />
-		<?php echo format_tutorial_tags($tut['tags']);?>
-	</p>
 	<?php endforeach;?>
 </div>
 
@@ -60,8 +32,8 @@
 .Tbox a.Tti:hover { color:#0af;}
 
 h3 {background:#222; text-indent:15px; margin:5px; color:#999; border-bottom:1px solid #0af;}
-.midSect {float:left; width:460px;}
-.tut {background:#222; border:1px solid #333; width:455px;}
+.midSect {float:left; width:650px;}
+.tut {background:#222; border:1px solid #333; width:635px;}
 .tut p {margin:0; padding:1px 5px;}
 .tut .tit {background:#000; text-indent:15px;}
 .Wfor {float:right; color:#999;}

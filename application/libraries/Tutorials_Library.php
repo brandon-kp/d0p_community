@@ -90,4 +90,9 @@ class Tutorials_library extends CI_Controller {
 		return $this->tutorials->newest_tutorials();
 	}
 	
+	public function search_tag()
+	{
+		return $this->tutorials->search_tag($this->uri->segment(3));
+	}
+	
 }

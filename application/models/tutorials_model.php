@@ -65,4 +65,13 @@ class Tutorials_model extends CI_Model {
 		return $new;
 	}
 	
+	public function search_tag($tag)
+	{
+		$this->db->join('user_profile','user_profile.id=tutorials.submitter');
+		$this->db->select('tutorials.id, tutorials.tags, tutorials.title, tutorials.thumbs_up, user_profile.name, user_profile.id as userid, tutorials.date, tutorials.description');
+		$this->db->like('tags', $tag);
+		$tagged = $this->db->get_where('tutorials', array('approved'=>'1'))->result_array();
+		return $tagged;
+	}
+	
 }
