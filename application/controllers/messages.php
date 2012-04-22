@@ -77,4 +77,12 @@ class Messages extends CI_Controller {
 		}
 	}
 	
+	public function sent()
+	{
+		$this->data['messages'] = $this->messages->get_sent_messages($this->session->userdata('id'));
+		$this->template
+			->title('.^. Skem9 :: Sent Messages .^.')
+			->build('partials/messages/sent_messages', $this->data);
+	}
+	
 }

@@ -9,7 +9,7 @@
 ---To:   <?php echo $message['to']."\r\n"; ?>
 ---Date: <?php echo $message['date']."\r\n";?>
 ---Text: <?php echo $message['text']."\r\n"; ?>
---------------END MESSAGE----------------		
+--------------END MESSAGE----------------	
 		</textarea></p>
 		<p id="replyp"><input type="submit" id="send_reply" name="sub" value="Send Message" /></p>
 		<input type="hidden" name="to" value="<?php echo $message['from']; ?>" />

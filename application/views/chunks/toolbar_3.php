@@ -1,5 +1,6 @@
 <span class="toolbar_title">Admin Tools</span>
 <ul>
+	<li><a href="<?php echo site_url('admin');?>">Admin Panel</a></li>
 	<li><a href="<?php echo site_url('updates');?>">Publish Update</a></li>
 </ul>
 

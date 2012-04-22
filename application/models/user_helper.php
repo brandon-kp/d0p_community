@@ -45,4 +45,11 @@ class User_helper extends CI_Model {
 		return $this->db->get_where('user_comments',array('to'=>$id, 'area'=>0, 'read'=>'0'))->result_array();
 	}
 	
+	public function increase_tokens($for_user,$increase_by)
+	{
+		$tokens = $this->db->select('tokens')->where('id', $for_user)->get('user_profile')->result_array();
+		$tokens = $tokens[0]['tokens']+$increase_by;
+		$this->db->where('id', $for_user)->update('user_profile', array('tokens'=>$tokens));
+	}
+	
 }

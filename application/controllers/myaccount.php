@@ -144,7 +144,8 @@ class Myaccount extends CI_Controller {
 			$this->myaccount->upload_photo($this->session->userdata('id'), $json['hash'], '', $json['deletehash'], $json['type']);
 			
 			redirect('myaccount/uploadphotos');
-		}		
+		}
+		tokens($this->session->userdata('id'),'20');
 	}
 	
 	public function updatephotos_process()
@@ -187,12 +188,19 @@ class Myaccount extends CI_Controller {
 		if($this->input->post('approve'))
 		{
 			$this->myaccount->approve_buddy($this->session->userdata('id'), $this->input->post('approve'));
+			tokens($this->session->userdata('id'),'10');
 		}
 		elseif($this->input->post('deny'))
 		{
 			$this->myaccount->deny_buddy($this->session->userdata('id'), $this->input->post('deny'));
 		}
 		redirect('myaccount/managebuddies');
+	}
+	
+	public function test()
+	{
+		$this->load->helper('bbcode');
+		echo bbcode("[size=18]sup homie[/size]");
 	}
 }
 

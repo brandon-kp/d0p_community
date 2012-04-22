@@ -107,5 +107,4 @@ class Myaccount_model extends CI_Model {
 		$this->db->delete('user_relationships',array('user_2'=>$user_id,'user_1'=>$friend_id));
 			
 	}
-	
 }

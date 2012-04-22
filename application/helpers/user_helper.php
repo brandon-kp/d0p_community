@@ -126,3 +126,11 @@ function format_tutorial_tags($tags)
 	
 	return $tags;
 }
+
+function tokens($for_user,$increase_by)
+{
+	$ci =& get_instance();
+	$ci->load->model('user_helper');
+	
+	$ci->user_helper->increase_tokens($for_user, $increase_by);
+}

@@ -18,7 +18,7 @@
 
 <div id="tokens">
 	<strong>Tokens</strong>
-	<p>Coming soon...</p>
+	<p><?php echo $account_info['tokens'];?> Tokens</p>
 </div>
 
 <div id="rightcol">

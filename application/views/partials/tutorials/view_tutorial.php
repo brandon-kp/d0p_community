@@ -24,8 +24,38 @@
 		</div>
 	</div>
 </div>
-<style type="text/css">
 
+<script>
+$('#thumbs_up').click(function(){
+	var data = 'action=rating&thumbs_up=true&to=<?php echo $this->uri->segment(3);?>';
+	$.ajax({
+		  type: 'POST',
+		  url: "<?php echo site_url('tutorials/rate');?>",
+		  data: data
+		}).done(function( response ) {
+			$('.rate')
+				.slideUp('slow',function(){
+					$('#thanks_for_rating').slideDown("slow");
+				});
+		});
+	return false;	
+});
+$('#thumbs_down').click(function(){
+	var data = 'action=rating&thumbs_down=true&to=<?php echo $this->uri->segment(3);?>';
+	$.ajax({
+		  type: 'POST',
+		  url: "<?php echo site_url('tutorials/rate');?>",
+		  data: data
+		}).done(function( response ) {
+			$('.rate')
+				.slideUp('slow',function(){
+					$('#thanks_for_rating').slideDown("slow");
+				});
+		});
+	return false;	
+});
+</script>
+<style type="text/css">
 .clear {clear:both;}
 .doTheBrowse {float:left; width:465px; background:#333; margin:3px; border:1px solid #555;}
 .doTheBrowse p.a {margin:2px 0; padding:0; color:#999; text-indent:10px; border-bottom:1px solid #0af; font-size:1.1em;}
@@ -68,34 +98,3 @@
 .commentsPeps .comImg {float:left;}
 #updatedLine {border-width:5px; border-style:solid; border-color:#6e9dd4 #111;  color:#999; width:300px; margin:5px auto; }
 </style>
-
-<script>
-$('#thumbs_up').click(function(){
-	var data = 'action=rating&thumbs_up=true&to=<?php echo $this->uri->segment(3);?>';
-	$.ajax({
-		  type: 'POST',
-		  url: "<?php echo site_url('tutorials/rate');?>",
-		  data: data
-		}).done(function( response ) {
-			$('.rate')
-				.slideUp('slow',function(){
-					$('#thanks_for_rating').slideDown("slow");
-				});
-		});
-	return false;	
-});
-$('#thumbs_down').click(function(){
-	var data = 'action=rating&thumbs_down=true&to=<?php echo $this->uri->segment(3);?>';
-	$.ajax({
-		  type: 'POST',
-		  url: "<?php echo site_url('tutorials/rate');?>",
-		  data: data
-		}).done(function( response ) {
-			$('.rate')
-				.slideUp('slow',function(){
-					$('#thanks_for_rating').slideDown("slow");
-				});
-		});
-	return false;	
-});
-</script>
